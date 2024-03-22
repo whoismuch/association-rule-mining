@@ -176,5 +176,15 @@ def fp_growth(transactions, minSupport):
     result = []
     for item, support in mining_frequent(transactions, minSupport):
         result.append((item, support))
-    result.sort(key=lambda x: x[1],reverse=True)
-    return result
+    result.sort(key=lambda x: x[1], reverse=True)
+
+    return get_dictionary_from_list(result)
+
+
+def get_dictionary_from_list(list):
+    dict = {}
+    for array, number in list:
+        key = tuple(array)
+        dict[key] = number
+
+    return dict
