@@ -1,5 +1,5 @@
 from collections import defaultdict, namedtuple
-
+from memory_profiler import profile
 
 class FP_Node:
     def __init__(self, tree, item, count=1):
@@ -172,6 +172,7 @@ def mining_frequent(transactions, minSupport):
         yield i
 
 
+@profile
 def fp_growth(transactions, minSupport):
     result = []
     for item, support in mining_frequent(transactions, minSupport):
