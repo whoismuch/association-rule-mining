@@ -184,7 +184,7 @@ def fp_growth(transactions, minSupport):
 def get_dictionary_from_list(list):
     dict = {}
     for array, number in list:
-        key = tuple(array)
+        key = tuple(sorted(array))
         dict[key] = number
 
     return dict

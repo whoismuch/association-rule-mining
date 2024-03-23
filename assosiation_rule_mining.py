@@ -13,11 +13,10 @@ def get_ass_rules(frequent_itemset, minconf):
         support_of_set = value
         subsets = get_all_subsets(freq_set)
         for subset in subsets:
+            subset = tuple(sorted(subset))
             support_of_subset = frequent_itemset.get(subset)
-            if support_of_subset is None:
-                support_of_subset = 1
             confidence = support_of_set / support_of_subset
             if confidence >= minconf:
                 target = freq_set - set(subset)
-                assosiation_rules[subset] = target
+                assosiation_rules[subset] = (target, confidence)
     return assosiation_rules
